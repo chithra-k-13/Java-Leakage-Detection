@@ -1,0 +1,64 @@
+<!-- <div class="section">
+    <h2>User Management</h2>
+    <form [formGroup]="userForm">
+      
+        <label for="allocatedData"> Field Name:</label>
+        <input type="text" formControlName="allocatedData" required>
+
+        <label for="username">User Data:</label>
+        <input type="text" formControlName="username" required>
+
+        <label for="alterationData">Agent Data Alteration:</label>
+        <select class="form-select" formControlName="alterationData">
+
+            <option value="">select</option>
+            <option *ngFor="let item of typeResult" [value]="item.types">{{ item.types }}</option>
+        </select>
+      
+        <label for="email">Email:</label>
+        <input type="email" formControlName="email" required>
+
+        <button (click)="createUser()">Create User</button>
+      
+    </form>
+    <button routerLink="/all-User">Get All Users</button>
+</div>
+<div>
+    <button routerLink="/leakage">Detect</button>
+</div> -->
+
+<div class="container">
+    <h2>User Management</h2>
+    <form [formGroup]="userForm" class="form-box">
+        <label for="allocatedData">Field Name:</label>
+        <input type="text" formControlName="allocatedData" required>
+        <!-- <div *ngIf="userForm.get('allocatedData')?.invalid && userForm.get('allocatedData')?.touched" class="error-message">
+            Field Name is required.
+        </div> -->
+
+        <label for="username">User Data:</label>
+        <input type="text" formControlName="username" required>
+        <!-- <div *ngIf="userForm.get('username')?.invalid && userForm.get('username')?.touched" class="error-message">
+            User Data is required.
+        </div> -->
+
+        <label for="alterationData">Agent Data Alteration:</label>
+        <select formControlName="alterationData">
+            <option value="">Select</option>
+            <option *ngFor="let item of typeResult" [value]="item.types">{{ item.types }}</option>
+        </select>
+        <!-- <div *ngIf="userForm.get('alterationData')?.invalid && userForm.get('alterationData')?.touched" class="error-message">
+            Agent Data Alteration is required.
+        </div> -->
+
+        <label for="email">Email:</label>
+        <input type="email" formControlName="email" required>
+        <!-- <div *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched" class="error-message">
+            Valid email is required.
+        </div>
+     -->
+        <button type="submit" [disabled]="userForm.invalid" (click)="createUser()">Create User</button>
+        <button routerLink="/leakage" class="btn">Detect</button>
+        <button routerLink="/all-User" class="btnAll">Get All Users</button>
+    </form>
+</div>

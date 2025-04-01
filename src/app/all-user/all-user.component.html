@@ -1,0 +1,32 @@
+<div>
+    <h2 class="pagination-container">Sample Leakage Data</h2>
+    <div *ngIf="userResult.length > 0">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">S.no</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">CompanyName</th>
+                    <th scope="col">Type</th>
+                    <th scope="col"> </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of userResult | paginate: { itemsPerPage: 10, currentPage: p }; let i = index">
+                    <td>{{ (p - 1) * 10 + i + 1 }}</td>
+                    <td>{{ item.username }}</td>
+                    <td>{{ item.allocatedData }}</td>
+                    <td>{{ item.alterationData }}</td>
+                    <td><button class="btn btn-danger" (click)="deleteUser(item.id)">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="pagination-container">
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+        <button class="btn btn-primary" routerLink="/">Back</button>
+    </div>
+    <div *ngIf="userResult.length === 0">
+        <p>No data available.</p>
+    </div>
+</div>
